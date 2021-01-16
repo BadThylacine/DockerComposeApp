@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+#  app:
+#    image: 'demo:latest'
+#    build:
+#      context: .
+#    container_name: app
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+#      - SPRING_DATASOURCE_USERNAME=compose-postgres
+#      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#
+#  db:
+#    image: 'postgres:13.1-alpine'
+#    container_name: db
+#    environment:
+#      - POSTGRES_USER=compose-postgres
+#      - POSTGRES_PASSWORD=compose-postgres
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: "rmq3"
+    hostname: "albatross"
+    restart: "no"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+    labels:
+      NAME: "rabbitmq1"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
